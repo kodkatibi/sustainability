@@ -15,6 +15,10 @@ class CreatePoliciesTable extends Migration
     {
         Schema::create('policies', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('company_id');
+            $table->string('title');
+            $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
