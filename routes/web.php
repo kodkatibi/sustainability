@@ -37,7 +37,7 @@ Route::group(['prefix' => 'policy'], function () {
 });
 
 Route::group(['prefix' => 'vote'], function () {
-    Route::post('/store', [\App\Http\Controllers\VoteController::class, 'store'])->middleware('auth')->name('policy.index');
+    Route::post('/store', [\App\Http\Controllers\VoteController::class, 'store'])->middleware('auth');
 
 });
 
