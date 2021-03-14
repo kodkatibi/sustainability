@@ -14,4 +14,9 @@ class CompanyController extends Controller
         return CompanyResource::collection(Company::paginate());
 
     }
+
+    public function info($id)
+    {
+        return CompanyResource::collection(Company::find($id));
+    }
 }
