@@ -1,34 +1,36 @@
 <template>
-    <el-table :data="companydatas" v-loading="loading" >
-        <el-table-column prop="id" label="id">
+    <div>
+        <el-table :data="companydatas" v-loading="loading" >
+            <el-table-column prop="id" label="id">
 
-        </el-table-column>
-        <el-table-column prop="name" label="Company Name">
+            </el-table-column>
+            <el-table-column prop="name" label="Company Name">
 
-        </el-table-column>
+            </el-table-column>
 
-        <el-table-column prop="description" label="Description">
+            <el-table-column prop="description" label="Description">
 
-        </el-table-column>
+            </el-table-column>
 
-        <el-table-column prop="vote" label="Vote">
+            <el-table-column prop="vote" label="Vote">
 
-        </el-table-column>
-        <el-table-column
-            fixed="right"
-            prop="id"
-            label="Operations"
-            width="120">
-            <template slot-scope="scope">
-                <el-button @click="getCompanyinfo(scope.$index,scope.row)" type="text" size="small">Detail</el-button>
+            </el-table-column>
+            <el-table-column
+                fixed="right"
+                prop="id"
+                label="Operations"
+                width="120">
+                <template slot-scope="scope">
+                    <el-button @click="getCompanyinfo(scope.$index,scope.row)" type="text" size="small">Detail</el-button>
 
-            </template>
-        </el-table-column>
-    </el-table>
+                </template>
+            </el-table-column>
+        </el-table>
 
-    <el-drawer direction="rtl" :title="vote.companyname">
+        <el-drawer direction="rtl" :visible.sync="vote.sync" :title="vote.companyname">
 
-    </el-drawer>
+        </el-drawer>
+    </div>
 </template>
 
 <script>
