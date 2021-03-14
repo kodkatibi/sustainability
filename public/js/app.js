@@ -3522,8 +3522,104 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "AddCompanyForm"
+  name: "AddCompanyForm",
+  data: function data() {
+    return {
+      form: {
+        name: null,
+        description: null,
+        sector: null,
+        website: null
+      }
+    };
+  },
+  methods: {
+    submitForm: function submitForm() {
+      var _this = this;
+
+      axios.post('/company/store', this.form).then(function (response) {
+        _this.$message({
+          showClose: true,
+          message: 'Succes',
+          type: 'success'
+        });
+
+        window.location.href = '/company';
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.$message({
+            showClose: true,
+            message: 'Required fields',
+            type: 'error'
+          });
+        } else if (error.response.status === 402) {
+          _this.$message({
+            showClose: true,
+            message: error.response.data.message,
+            type: 'error'
+          });
+        } else {
+          _this.$message({
+            showClose: true,
+            message: 'Something went wrong. Do not worry. We will fix it.',
+            type: 'error'
+          });
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -3570,6 +3666,45 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/tables/CompanyTable.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/tables/CompanyTable.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "CompanyTable",
+  props: ['companyData'],
+  data: function data() {},
+  beforeMount: function beforeMount() {}
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3601,7 +3736,8 @@ window.Element = __webpack_require__(/*! element-ui */ "./node_modules/element-u
 
 Vue.component('policy-form', __webpack_require__(/*! ./components/forms/PolicyForm */ "./resources/js/components/forms/PolicyForm.vue").default);
 Vue.component('vote-form', __webpack_require__(/*! ./components/forms/VoteForm */ "./resources/js/components/forms/VoteForm.vue").default);
-Vue.component('add-company-form', __webpack_require__(/*! ./components/forms/AddCompanyForm */ "./resources/js/components/forms/AddCompanyForm.vue").default);
+Vue.component('company-form', __webpack_require__(/*! ./components/forms/AddCompanyForm */ "./resources/js/components/forms/AddCompanyForm.vue").default);
+Vue.component('company-table', __webpack_require__(/*! ./components/tables/CompanyTable */ "./resources/js/components/tables/CompanyTable.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -99711,6 +99847,45 @@ component.options.__file = "resources/js/components/forms/VoteForm.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/tables/CompanyTable.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/tables/CompanyTable.vue ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _CompanyTable_vue_vue_type_template_id_4062ed40_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true& */ "./resources/js/components/tables/CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true&");
+/* harmony import */ var _CompanyTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CompanyTable.vue?vue&type=script&lang=js& */ "./resources/js/components/tables/CompanyTable.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _CompanyTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _CompanyTable_vue_vue_type_template_id_4062ed40_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _CompanyTable_vue_vue_type_template_id_4062ed40_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "4062ed40",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/tables/CompanyTable.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/forms/AddCompanyForm.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/forms/AddCompanyForm.vue?vue&type=script&lang=js& ***!
@@ -99756,6 +99931,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VoteForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./VoteForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/forms/VoteForm.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VoteForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/tables/CompanyTable.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/tables/CompanyTable.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CompanyTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CompanyTable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/tables/CompanyTable.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CompanyTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -99810,6 +100001,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/tables/CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/tables/CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CompanyTable_vue_vue_type_template_id_4062ed40_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CompanyTable_vue_vue_type_template_id_4062ed40_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CompanyTable_vue_vue_type_template_id_4062ed40_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/tables/CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true&");
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/forms/AddCompanyForm.vue?vue&type=template&id=1fc3f24b&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/forms/AddCompanyForm.vue?vue&type=template&id=1fc3f24b&scoped=true& ***!
@@ -99828,7 +100036,149 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("el-form", [_c("el-input", { attrs: { label: "ali" } })], 1)],
+    [
+      _c("el-form", [
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+              _c(
+                "div",
+                { staticClass: "el-input--suffix grid-content mt-5" },
+                [
+                  _c(
+                    "el-form-item",
+                    {
+                      attrs: { label: "Company Name*", type: "text", prop: "" }
+                    },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Company Name",
+                          "suffix-icon": "el-icon-events"
+                        },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+              _c(
+                "div",
+                { staticClass: "el-input--suffix grid-content mt-5" },
+                [
+                  _c(
+                    "el-form-item",
+                    {
+                      attrs: { label: "Description*", type: "text", prop: "" }
+                    },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Description",
+                          "suffix-icon": "el-icon-events"
+                        },
+                        model: {
+                          value: _vm.form.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "description", $$v)
+                          },
+                          expression: "form.description"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+              _c(
+                "div",
+                { staticClass: "el-input--suffix grid-content mt-5" },
+                [
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Sector", type: "text", prop: "" } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Sector",
+                          "suffix-icon": "el-icon-events"
+                        },
+                        model: {
+                          value: _vm.form.sector,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "sector", $$v)
+                          },
+                          expression: "form.sector"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+              _c(
+                "div",
+                { staticClass: "el-input--suffix grid-content mt-5" },
+                [
+                  _c(
+                    "el-form-item",
+                    { attrs: { label: "Website", type: "text", prop: "" } },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Website",
+                          "suffix-icon": "el-icon-events"
+                        },
+                        model: {
+                          value: _vm.form.website,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "website", $$v)
+                          },
+                          expression: "form.website"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "el-button",
+              {
+                attrs: { type: "success", round: "" },
+                on: { click: _vm.submitForm }
+              },
+              [_vm._v("Submit")]
+            )
+          ],
+          1
+        )
+      ])
+    ],
     1
   )
 }
@@ -99883,6 +100233,65 @@ var render = function() {
   return _c("div")
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/tables/CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/tables/CompanyTable.vue?vue&type=template&id=4062ed40&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "col-md-6 col-xl-3" }, [
+        _c("div", { staticClass: "card widget-card-1" }, [
+          _c("div", { staticClass: "card-block-small" }, [
+            _c("i", {
+              staticClass: "icofont icofont-pie-chart bg-c-blue card1-icon"
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-c-blue f-w-600" }, [
+              _vm._v("Use space")
+            ]),
+            _vm._v(" "),
+            _c("h4", [_vm._v("49/50GB")]),
+            _vm._v(" "),
+            _c("div", [
+              _c("span", { staticClass: "f-left m-t-10 text-muted" }, [
+                _c("i", {
+                  staticClass: "text-c-blue f-16 icofont icofont-warning m-r-10"
+                }),
+                _vm._v(
+                  "Get more space\n                                                        "
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

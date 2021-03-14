@@ -22,7 +22,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.component('policy-form', require('./components/forms/PolicyForm').default);
 Vue.component('vote-form', require('./components/forms/VoteForm').default);
-Vue.component('add-company-form', require('./components/forms/AddCompanyForm').default);
+Vue.component('company-form', require('./components/forms/AddCompanyForm').default);
+Vue.component('company-table', require('./components/tables/CompanyTable').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

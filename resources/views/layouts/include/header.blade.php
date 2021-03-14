@@ -6,7 +6,7 @@
         <i class="ti-search"></i>
     </a>
     <a href="{{route('home')}}">
-        <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo"/>
+        <img class="img-fluid" src="https://www.carlogos.org/logo/Genesis-text-logo-1920x1080.png" alt="Theme-Logo"/>
     </a>
     <a class="mobile-options">
         <i class="ti-more"></i>

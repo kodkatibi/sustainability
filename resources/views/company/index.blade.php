@@ -2,24 +2,43 @@
 
 @section('content')
     <div class="page-body">
-        <div class="row">
-            <!-- card1 start -->
-            <div class="col-md-6 col-xl-3">
-                <div class="card widget-card-1">
-                    <div class="card-block-small">
-                        <i class="icofont icofont-pie-chart bg-c-blue card1-icon"></i>
-                        <span class="text-c-blue f-w-600">Use space</span>
-                        <h4>49/50GB</h4>
-                        <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-blue f-16 icofont icofont-warning m-r-10"></i>Get more space
-                                                            </span>
-                        </div>
-                    </div>
+
+        <!-- Basic table card start -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Companies table</h5>
+            </div>
+            <div class="card-block table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Company Name</th>
+                            <th>Sector</th>
+                            <th>Website</th>
+                            <th>Vote</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($companies as $company)
+
+                            <tr>
+                                <th scope="row">{{$company->id}}</th>
+                                <td>{{$company->name}}</td>
+                                <td>{{$company->sector}}</td>
+                                <td><a href="{{$company->website}}" target="_blank">{{Str::limit($company->website,10)}}</a></td>
+                                <td>{{$company->voteResult}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
-            <!-- card1 end -->
-
         </div>
+        <!-- Basic table card end -->
+
     </div>
+
 @endsection

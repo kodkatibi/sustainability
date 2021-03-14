@@ -10,4 +10,5 @@ class Vote extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $guarded = [];
 }

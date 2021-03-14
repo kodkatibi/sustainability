@@ -10,5 +10,22 @@ class Company extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $guarded = [];
+
+    protected $appends = [
+        'voteResult'
+    ];
+
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'company_id');
+    }
+
+
+    function getVoteResultAttribute(){
+        return round($this->votes()->avg('rate'), 1);
+    }
+
 
 }
