@@ -28,4 +28,9 @@ class Company extends Model
     }
 
 
+    public function Policies()
+    {
+        return $this->hasMany(Policy::class,'company_id');
+    }
+
 }

@@ -28,3 +28,9 @@ Route::group(['prefix' => 'company'], function () {
     Route::get('/add', [\App\Http\Controllers\CompanyController::class, 'create'])->name('company.create')->middleware('auth');
     Route::post('store', [\App\Http\Controllers\CompanyController::class, 'store']);
 });
+
+Route::group(['prefix' => 'policy'], function () {
+    Route::get('/', [\App\Http\Controllers\PolicyController::class, 'index'])->name('policy.index');
+    Route::get('/add', [\App\Http\Controllers\PolicyController::class, 'create'])->name('policy.create')->middleware('auth');
+    Route::post('store', [\App\Http\Controllers\PolicyController::class, 'store']);
+});

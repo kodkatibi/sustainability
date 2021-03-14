@@ -3639,8 +3639,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "PolicyForm"
+  name: "PolicyForm",
+  props: ['companyid'],
+  data: function data() {
+    return {
+      form: {
+        title: null,
+        description: null
+      }
+    };
+  },
+  methods: {
+    submitForm: function submitForm() {
+      var _this = this;
+
+      axios.post('/policy/store', this.form).then(function (response) {
+        _this.$message({
+          showClose: true,
+          message: 'Succes',
+          type: 'success'
+        });
+
+        window.location.href = '/policy';
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.$message({
+            showClose: true,
+            message: 'Required fields',
+            type: 'error'
+          });
+        } else if (error.response.status === 402) {
+          _this.$message({
+            showClose: true,
+            message: error.response.data.message,
+            type: 'error'
+          });
+        } else {
+          _this.$message({
+            showClose: true,
+            message: 'Something went wrong. Do not worry. We will fix it.',
+            type: 'error'
+          });
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -100205,7 +100280,93 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "div",
+    [
+      _c("el-form", [
+        _c(
+          "div",
+          { staticClass: "row" },
+          [
+            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+              _c(
+                "div",
+                { staticClass: "el-input--suffix grid-content mt-5" },
+                [
+                  _c(
+                    "el-form-item",
+                    {
+                      attrs: { label: "Policy Name*", type: "text", prop: "" }
+                    },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Policy Name",
+                          "suffix-icon": "el-icon-events"
+                        },
+                        model: {
+                          value: _vm.form.title,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "title", $$v)
+                          },
+                          expression: "form.title"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-sm-12" }, [
+              _c(
+                "div",
+                { staticClass: "el-input--suffix grid-content mt-5" },
+                [
+                  _c(
+                    "el-form-item",
+                    {
+                      attrs: { label: "Description*", type: "text", prop: "" }
+                    },
+                    [
+                      _c("el-input", {
+                        attrs: {
+                          placeholder: "Description",
+                          "suffix-icon": "el-icon-events"
+                        },
+                        model: {
+                          value: _vm.form.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "description", $$v)
+                          },
+                          expression: "form.description"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "el-button",
+              {
+                attrs: { type: "success", round: "" },
+                on: { click: _vm.submitForm }
+              },
+              [_vm._v("Submit")]
+            )
+          ],
+          1
+        )
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
