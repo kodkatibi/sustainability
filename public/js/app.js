@@ -3592,7 +3592,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/company/store', this.form).then(function (response) {
         _this.$message({
           showClose: true,
-          message: 'Succes',
+          message: 'Success',
           type: 'success'
         });
 
@@ -3764,6 +3764,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "VoteForm",
   data: function data() {
@@ -3773,34 +3780,72 @@ __webpack_require__.r(__webpack_exports__);
       vote: {
         companyid: null,
         companyname: null,
+        rate: null,
         sync: false
       }
     };
   },
   methods: {
-    getCompanyinfo: function getCompanyinfo(index, rows) {}
+    getCompanyinfo: function getCompanyinfo(index, rows) {
+      this.vote.sync = true;
+      this.vote.companyname = rows.name;
+      this.vote.companyid = rows.id;
+    },
+    submitVote: function submitVote() {
+      var _this = this;
+
+      axios.post('/vote/store', this.vote).then(function (response) {
+        _this.$message({
+          showClose: true,
+          message: 'Success',
+          type: 'success'
+        });
+
+        _this.vote.sync = false;
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.$message({
+            showClose: true,
+            message: 'Required fields',
+            type: 'error'
+          });
+        } else if (error.response.status === 402) {
+          _this.$message({
+            showClose: true,
+            message: error.response.data.message,
+            type: 'error'
+          });
+        } else {
+          _this.$message({
+            showClose: true,
+            message: 'Something went wrong. Do not worry. We will fix it.',
+            type: 'error'
+          });
+        }
+      });
+    }
   },
   beforeMount: function beforeMount() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/api/companies').then(function (response) {
-      _this.companydatas = response.data.data;
-      _this.loading = false;
+      _this2.companydatas = response.data.data;
+      _this2.loading = false;
     })["catch"](function (error) {
       if (error.response.status === 422) {
-        _this.$message({
+        _this2.$message({
           showClose: true,
           message: 'Required fields',
           type: 'error'
         });
       } else if (error.response.status === 402) {
-        _this.$message({
+        _this2.$message({
           showClose: true,
           message: error.response.data.message,
           type: 'error'
         });
       } else {
-        _this.$message({
+        _this2.$message({
           showClose: true,
           message: 'Something went wrong. Do not worry. We will fix it.',
           type: 'error'
@@ -100458,8 +100503,110 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "el-table",
+        {
+          directives: [
+            {
+              name: "loading",
+              rawName: "v-loading",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          attrs: { data: _vm.companydatas }
+        },
+        [
+          _c("el-table-column", { attrs: { prop: "id", label: "id" } }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: { prop: "name", label: "Company Name" }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: { prop: "description", label: "Description" }
+          }),
+          _vm._v(" "),
+          _c("el-table-column", { attrs: { prop: "vote", label: "Vote" } }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: {
+              fixed: "right",
+              prop: "id",
+              label: "Operations",
+              width: "120"
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(scope) {
+                  return [
+                    _c(
+                      "el-button",
+                      {
+                        attrs: { type: "text", size: "small" },
+                        on: {
+                          click: function($event) {
+                            return _vm.getCompanyinfo(scope.$index, scope.row)
+                          }
+                        }
+                      },
+                      [_vm._v("Detail\n                ")]
+                    )
+                  ]
+                }
+              }
+            ])
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-drawer",
+        {
+          attrs: {
+            direction: "rtl",
+            visible: _vm.vote.sync,
+            title: _vm.vote.companyname
+          },
+          on: {
+            "update:visible": function($event) {
+              return _vm.$set(_vm.vote, "sync", $event)
+            }
+          }
+        },
+        [
+          _c("el-rate", {
+            attrs: { max: 10 },
+            model: {
+              value: _vm.vote.rate,
+              callback: function($$v) {
+                _vm.$set(_vm.vote, "rate", $$v)
+              },
+              expression: "vote.rate"
+            }
+          }),
+          _vm._v(" "),
+          _c("el-button", { on: { click: _vm.submitVote } }, [
+            _vm._v(" Submit")
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 

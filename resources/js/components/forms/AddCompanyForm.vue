@@ -75,7 +75,7 @@ export default {
             axios.post('/company/store', this.form).then((response) => {
                 this.$message({
                     showClose: true,
-                    message: 'Succes',
+                    message: 'Success',
                     type: 'success'
                 });
                 window.location.href='/company'

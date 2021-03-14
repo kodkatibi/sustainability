@@ -34,7 +34,7 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**

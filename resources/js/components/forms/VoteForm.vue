@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-table :data="companydatas" v-loading="loading" >
+        <el-table :data="companydatas" v-loading="loading">
             <el-table-column prop="id" label="id">
 
             </el-table-column>
@@ -21,14 +21,19 @@
                 label="Operations"
                 width="120">
                 <template slot-scope="scope">
-                    <el-button @click="getCompanyinfo(scope.$index,scope.row)" type="text" size="small">Detail</el-button>
+                    <el-button @click="getCompanyinfo(scope.$index,scope.row)" type="text" size="small">Detail
+                    </el-button>
 
                 </template>
             </el-table-column>
         </el-table>
 
         <el-drawer direction="rtl" :visible.sync="vote.sync" :title="vote.companyname">
+            <el-rate :max="10" v-model="vote.rate">
 
+            </el-rate>
+
+            <el-button @click="submitVote"> Submit</el-button>
         </el-drawer>
     </div>
 </template>
@@ -40,18 +45,54 @@ export default {
         return {
             companydatas: null,
             loading: true,
-            vote:{
-                companyid:null,
-                companyname:null,
-                sync:false,
+            vote: {
+                companyid: null,
+                companyname: null,
+                rate: null,
+                sync: false,
 
             }
         }
     },
     methods: {
-        getCompanyinfo(index,rows) {
-
+        getCompanyinfo(index, rows) {
+            this.vote.sync = true;
+            this.vote.companyname = rows.name;
+            this.vote.companyid = rows.id;
         },
+        submitVote() {
+            axios.post('/vote/store', this.vote).then((response) => {
+
+                this.$message({
+                    showClose: true,
+                    message: 'Success',
+                    type: 'success'
+                });
+                this.vote.sync = false;
+            }).catch((error) => {
+                if (error.response.status === 422) {
+
+                    this.$message({
+                        showClose: true,
+                        message: 'Required fields',
+                        type: 'error'
+                    });
+                } else if (error.response.status === 402) {
+
+                    this.$message({
+                        showClose: true,
+                        message: error.response.data.message,
+                        type: 'error'
+                    });
+                } else {
+                    this.$message({
+                        showClose: true,
+                        message: 'Something went wrong. Do not worry. We will fix it.',
+                        type: 'error'
+                    });
+                }
+            })
+        }
 
     },
 
