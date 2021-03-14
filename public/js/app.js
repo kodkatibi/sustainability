@@ -3735,8 +3735,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "VoteForm"
+  name: "VoteForm",
+  data: function data() {
+    return {
+      companydatas: null,
+      loading: true,
+      vote: {
+        companyid: null,
+        companyname: null,
+        sync: false
+      }
+    };
+  },
+  methods: {
+    getCompanyinfo: function getCompanyinfo(index, rows) {}
+  },
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    axios.get('/api/companies').then(function (response) {
+      _this.companydatas = response.data.data;
+      _this.loading = false;
+    })["catch"](function (error) {
+      if (error.response.status === 422) {
+        _this.$message({
+          showClose: true,
+          message: 'Required fields',
+          type: 'error'
+        });
+      } else if (error.response.status === 402) {
+        _this.$message({
+          showClose: true,
+          message: error.response.data.message,
+          type: 'error'
+        });
+      } else {
+        _this.$message({
+          showClose: true,
+          message: 'Something went wrong. Do not worry. We will fix it.',
+          type: 'error'
+        });
+      }
+    });
+  }
 });
 
 /***/ }),
@@ -100387,14 +100458,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render),
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
 
 
 

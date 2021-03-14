@@ -26,11 +26,12 @@ Route::get('/logout', [\App\Http\Controllers\HomeController::class, 'logout'])->
 Route::group(['prefix' => 'company'], function () {
     Route::get('/', [\App\Http\Controllers\CompanyController::class, 'index'])->name('company.index');
     Route::get('/add', [\App\Http\Controllers\CompanyController::class, 'create'])->name('company.create')->middleware('auth');
-    Route::post('store', [\App\Http\Controllers\CompanyController::class, 'store']);
+    Route::post('store', [\App\Http\Controllers\CompanyController::class, 'store'])->middleware('auth');
+    Route::get('info/{slug}',[\App\Http\Controllers\CompanyController::class,'show'])->name('company.info');
 });
 
 Route::group(['prefix' => 'policy'], function () {
     Route::get('/', [\App\Http\Controllers\PolicyController::class, 'index'])->name('policy.index');
     Route::get('/add', [\App\Http\Controllers\PolicyController::class, 'create'])->name('policy.create')->middleware('auth');
-    Route::post('store', [\App\Http\Controllers\PolicyController::class, 'store']);
+    Route::post('store', [\App\Http\Controllers\PolicyController::class, 'store'])->middleware('auth');
 });

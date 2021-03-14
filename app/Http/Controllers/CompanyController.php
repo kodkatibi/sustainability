@@ -36,4 +36,9 @@ class CompanyController extends Controller
         return response()->json($company, 201);
 
     }
+
+    public function show($slug)
+    {
+        $company = Company::whereSlug($slug)->first();
+    }
 }
