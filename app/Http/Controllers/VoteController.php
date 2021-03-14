@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vote;
 use Illuminate\Http\Request;
 
 class VoteController extends Controller
@@ -34,7 +35,16 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+       $data=array(
+           'user_id'=>\Auth::id(),
+           'company_id'=>$request->companyid,
+           'policy_id'=>rand(1,100),
+           'rate'=>$request->rate
+       );
+
+      $vote= Vote::create($data);
+
+       return response()->json($vote,201);
     }
 
     /**
