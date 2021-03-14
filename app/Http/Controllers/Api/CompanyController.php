@@ -17,6 +17,6 @@ class CompanyController extends Controller
 
     public function info($id)
     {
-        return CompanyResource::collection(Company::find($id));
+        return CompanyResource::collection(Company::whereId($id)->get());
     }
 }
